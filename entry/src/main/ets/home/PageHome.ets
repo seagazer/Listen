@@ -130,17 +130,27 @@ struct PageHome {
         this.mediaSession.onStateChanged((isPlaying: boolean) => {
             this.isPlaying = isPlaying
         })
+        let currentId = this.mediaSession.getPlayingId()
+        let song = this.playlistManager.getRealSong(currentId)
         this.lyricController
-            .setTextSize(vp2px(UIConfig.FONT_CONTENT))
-            .setCacheSize(10)
+            .setTextSize(UIConfig.FONT_BUTTON)
             .setAnimationDuration(400)
             .setTextColor("#80000000")
             .setHighlightColor(this.theme.colorPrimary)
-            .setLineSpace(vp2px(UIConfig.FONT_CONTENT))
+            .setLineSpace(UIConfig.FONT_BUTTON)
             .setHighlightStyle(false)
             .setEmptyHint("暂无歌词")
             .setLyric(null)
             .setAlignMode("center")
+        if (song) {
+            let lyricFile = FileScanner.scanLyricSync(getContext(this).filesDir, song.title)
+            if (lyricFile) {
+                let lyric = this.lyricParser.parse(lyricFile)
+                if (lyric) {
+                    this.lyricController.setLyric(lyric)
+                }
+            }
+        }
     }
 
     onThemeChanged() {
