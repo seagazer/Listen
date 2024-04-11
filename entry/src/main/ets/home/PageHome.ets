@@ -1,7 +1,7 @@
 import router from '@ohos.router';
 import { DEFAULT_THEME, Theme } from '../theme/Theme';
 import { MediaController } from '../view/MediaController';
-import { LyricController, LyricView } from '@seagazer/cclyric';
+import { LyricController, LyricView2 } from '@seagazer/cclyric';
 import { dimColor } from '../extensions/Extensions';
 import { Logger } from '../extensions/Logger';
 import { FileScanner } from '../extensions/FileScanner';
@@ -234,7 +234,11 @@ struct PageHome {
 
             // lyricView
             Column() {
-                LyricView({ controller: this.lyricController })
+                LyricView2({ controller: this.lyricController,
+                    onSeekAction: (position) => {
+                        this.mediaSession.seekTo(position)
+                        return true
+                    } })
             }
             .width("100%")
             .height("100%")
