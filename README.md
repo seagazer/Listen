@@ -1,6 +1,6 @@
 # listen
 
-A music player for OpenHarmony & HarmonyOS
+A music player for OpenHarmony
 
 <table>
 <tr>
@@ -23,3 +23,6 @@ A music player for OpenHarmony & HarmonyOS
 <td><center><img src="./img/9.jpeg" width="200" height="355"/></center></td>
 </tr>
 </table>
+
+Runtime Env：  
+DevEco Studio：4.0release（4.0.0.600） + full-SDK：4.0.10.16
