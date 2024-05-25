@@ -25,4 +25,4 @@ A music player for OpenHarmony
 </table>
 
 Runtime Env：  
-DevEco Studio：4.0release（4.0.0.600） + full-SDK：4.0.10.16
+DevEco Studio：4.1release（4.1.0.400） + full-SDK：4.1.7.5
