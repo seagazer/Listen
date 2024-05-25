@@ -8,9 +8,9 @@ export struct FavouriteItemView {
     @StorageLink(APP_THEME) theme: Theme = DEFAULT_THEME
     data?: Song = undefined
     isHighLight: boolean = false
-    onAction = (song: Song) => {
+    onAction = (song: Song | undefined) => {
     }
-    onFavourite = (song: Song) => {
+    onFavourite = (song: Song | undefined) => {
     }
 
     @Styles
@@ -43,7 +43,7 @@ export struct FavouriteItemView {
             .justifyContent(FlexAlign.Start)
             .alignItems(VerticalAlign.Center)
             .onClick(() => {
-                this.onAction(this.data)
+                this.onAction(this.data!)
             })
 
             Image($r("app.media.ic_public_favor_filled"))
@@ -52,7 +52,7 @@ export struct FavouriteItemView {
                 .padding(6)
                 .fillColor(this.theme.colorPrimary)
                 .onClick(() => {
-                    this.onFavourite(this.data)
+                    this.onFavourite(this.data!)
                 })
         }
         .width("100%")

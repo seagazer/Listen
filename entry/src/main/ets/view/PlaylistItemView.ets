@@ -8,9 +8,9 @@ export struct PlaylistItemView {
     @StorageLink(APP_THEME) theme: Theme = DEFAULT_THEME
     data?: Song = undefined
     isHighLight: boolean = false
-    onAction = (song: Song) => {
+    onAction = (song: Song | undefined) => {
     }
-    onDelete = (song: Song) => {
+    onDelete = (song: Song | undefined) => {
     }
 
     @Styles
@@ -43,7 +43,7 @@ export struct PlaylistItemView {
             .justifyContent(FlexAlign.Start)
             .alignItems(VerticalAlign.Center)
             .onClick(() => {
-                this.onAction(this.data)
+                this.onAction(this.data!)
             })
 
             Image($r("app.media.ic_public_cancel"))
@@ -52,7 +52,7 @@ export struct PlaylistItemView {
                 .padding(6)
                 .fillColor("#ffa4a4a4")
                 .onClick(() => {
-                    this.onDelete(this.data)
+                    this.onDelete(this.data!)
                 })
         }
         .width("100%")

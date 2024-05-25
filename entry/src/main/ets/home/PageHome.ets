@@ -137,7 +137,7 @@ struct PageHome {
             .setAnimationDuration(400)
             .setTextColor("#80000000")
             .setHighlightColor(this.theme.colorPrimary)
-            .setLineSpace(UIConfig.FONT_BUTTON)
+            .setLineSpace(UIConfig.FONT_TITLE)
             .setHighlightStyle(false)
             .setEmptyHint("暂无歌词")
             .setLyric(null)
@@ -351,6 +351,7 @@ struct PageHome {
             }
         } else {
             Logger.e(TAG, "get lyric error!")
+            this.lyricController.setLyric(null)
         }
         // save history when song changed, so the history is not loss if the app crash
         this.saveHistory()
