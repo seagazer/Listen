@@ -5,7 +5,9 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "default"
+      "default",
+      "phone",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -13,6 +15,10 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.READ_MEDIA",
+        "reason": "$string:app_name",
+        "usedScene": {
+          "abilities": []
+        }
       },
       {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"

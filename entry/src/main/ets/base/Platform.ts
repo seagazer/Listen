@@ -1,4 +1,4 @@
-import systemParameterEnhance from '@ohos.systemParameterEnhance'
+// import systemParameterEnhance from '@ohos.systemParameterEnhance'
 import { Logger } from '../extensions/Logger'
 
 const TAG = "[Platform]"
@@ -8,10 +8,10 @@ const TAG = "[Platform]"
  * Date: 2023/8/27
  */
 export class Platform {
-    private static sApiVersion: number
+    private static sApiVersion: number = 9
 
     static init() {
-        this.sApiVersion = Number.parseInt(systemParameterEnhance.getSync("const.ohos.apiversion", "9"))
+        // this.sApiVersion = Number.parseInt(systemParameterEnhance.getSync("const.ohos.apiversion", "9"))
         Logger.d(TAG, "The api version = " + this.sApiVersion)
     }
 

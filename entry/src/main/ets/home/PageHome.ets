@@ -138,7 +138,7 @@ struct PageHome {
             .setTextColor("#80000000")
             .setHighlightColor(this.theme.colorPrimary)
             .setLineSpace(UIConfig.FONT_TITLE)
-            .setHighlightStyle(false)
+            .setHighlightBold(false)
             .setEmptyHint("暂无歌词")
             .setLyric(null)
             .setAlignMode("center")

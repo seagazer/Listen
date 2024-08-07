@@ -1,9 +1,8 @@
 import { UIConfig } from '../config/UIConfig'
-import { dimColor } from '../extensions/Extensions'
 import { APP_THEME } from '../extensions/LiveData'
+import { FabStyle } from '../style/FabStyle'
 import { DEFAULT_THEME, Theme } from '../theme/Theme'
 
-@Preview
 @Component
 export struct Fab {
     @StorageLink(APP_THEME) theme: Theme = DEFAULT_THEME
@@ -15,28 +14,7 @@ export struct Fab {
     marginSize: Padding | Length = 0
     w: Length = 150
     h: Length = 50
-
-    @Styles
-    normalStyles(){
-        .backgroundColor(this.theme.colorPrimary)
-        .scale({ x: 1, y: 1 })
-        .shadow({
-            radius: UIConfig.DIMENSION_NORMAL_SHADOW,
-            color: "#ccb8b8b8",
-            offsetY: UIConfig.DIMENSION_OFFSET_SHADOW
-        })
-    }
-
-    @Styles
-    pressedStyles(){
-        .backgroundColor(dimColor(this.theme.colorPrimary))
-        .scale({ x: 0.95, y: 0.95 })
-        .shadow({
-            radius: UIConfig.DIMENSION_PRESS_SHADOW,
-            color: "#ccb8b8b8",
-            offsetY: UIConfig.DIMENSION_OFFSET_SHADOW
-        })
-    }
+    private fabStyle = new FabStyle(this.theme)
 
     build() {
         Text(this.text)
@@ -48,10 +26,7 @@ export struct Fab {
             .padding({ left: 16, right: 16, top: 8, bottom: 8 })
             .margin(this.marginSize)
             .border({ radius: this.h })
-            .stateStyles({
-                normal: this.normalStyles,
-                pressed: this.pressedStyles
-            })
+            .attributeModifier(this.fabStyle)
             .onClick((event) => {
                 this.onAction?.(event)
             })
@@ -61,3 +36,4 @@ export struct Fab {
             .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.8 })
     }
 }
+

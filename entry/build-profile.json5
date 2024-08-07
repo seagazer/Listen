@@ -1,5 +1,5 @@
 {
-  "apiType": 'stageMode',
+  "apiType": "stageMode",
   "buildOption": {
     "sourceOption": {
       "workers": [
@@ -7,9 +7,24 @@
       ]
     }
   },
+    "buildOptionSet": [
+    {
+      "name": "release",
+      "arkOptions": {
+        "obfuscation": {
+          "ruleOptions": {
+            "enable": true,
+            "files": [
+              "./obfuscation-rules.txt"
+            ]
+          }
+        }
+      }
+    },
+  ],
   "targets": [
     {
-      "name": "default",
+      "name": "default"
     },
     {
       "name": "ohosTest",
